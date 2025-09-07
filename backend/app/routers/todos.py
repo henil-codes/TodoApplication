@@ -8,6 +8,7 @@ router = APIRouter()
 
 # Create Todo
 @router.post("/", response_model=TodoResponse, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=TodoResponse, status_code=status.HTTP_201_CREATED)
 async def create_todo(todo: CreateTodo, db: Session = Depends(get_db)):
     db_todo = Todo(**todo.dict())
     db.add(db_todo)
@@ -19,6 +20,7 @@ async def create_todo(todo: CreateTodo, db: Session = Depends(get_db)):
 
 # Read all Todos
 @router.get("/", response_model=list[TodoResponse])
+@router.get("", response_model=list[TodoResponse])
 async def read_todos(db: Session = Depends(get_db)):
     todos = db.query(Todo).all()
 
