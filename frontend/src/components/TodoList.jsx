@@ -6,7 +6,7 @@ const TodoList = ({ todos, onToggleTodo, onDeleteTodo }) => {
     }
 
     return (
-        <div className="todo-list">
+        <div className="todo-list flex flex-col gap-4">
             {todos.map((todo)=> (
                 <TodoItem
                 key={todo.id}
